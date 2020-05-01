@@ -129,7 +129,7 @@ public class NumberOfItem extends RelativeLayout {
             show_img.setImageResource(srcResource);
             //设置背景样式
             show_img.setBackgroundResource(imgResource);
-            //设置约束
+            //设置位置
             show_img.layout(
                     l+PxUtil.dpToPx(5,getContext()),
                     t+PxUtil.dpToPx(5,getContext()),
@@ -138,6 +138,14 @@ public class NumberOfItem extends RelativeLayout {
             );
             //添加视图
             addView(show_img);
+        }else {
+            //设置位置
+            show_img.layout(
+                    l+PxUtil.dpToPx(5,getContext()),
+                    t+PxUtil.dpToPx(5,getContext()),
+                    r-PxUtil.dpToPx(5,getContext()),
+                    b-PxUtil.dpToPx(5,getContext())
+            );
         }
 
         //判断物品数量视图是否存在
@@ -146,7 +154,7 @@ public class NumberOfItem extends RelativeLayout {
             show_count = new TextView(getContext());
             //设置背景样式
             show_count.setBackgroundResource(countResource);
-            //设置约束
+            //设置位置
             show_count.layout(
                     r-PxUtil.dpToPx(25,getContext()),
                     b-PxUtil.dpToPx(25,getContext()),
@@ -154,6 +162,13 @@ public class NumberOfItem extends RelativeLayout {
             );
             //添加视图
             addView(show_count);
+        }else {
+            //设置位置
+            show_count.layout(
+                    r-PxUtil.dpToPx(25,getContext()),
+                    b-PxUtil.dpToPx(25,getContext()),
+                    r, b
+            );
         }
     }
 
