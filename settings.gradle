@@ -1,0 +1,3 @@
+rootProject.name='04_30_NumberOfItem'
+include ':app'
+include ':numberitem'
