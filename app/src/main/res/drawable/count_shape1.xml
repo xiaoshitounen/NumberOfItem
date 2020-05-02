@@ -2,6 +2,9 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
 
+    <!--设置圆角-->
+    <corners android:radius="18dp"/>
+
     <!--设置填充颜色-->
     <solid android:color="#EB5476"/>
 

@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -14,14 +15,14 @@ import android.widget.TextView;
 
 public class NumberOfItem extends RelativeLayout {
     //存储物品的图片描述
-    private ImageView show_img;
+    private ImageView show_img = null;
     //物品的图片
     private int srcResource;
     //物品图片的背景样式
     private int imgResource;
 
     //存储物品的数量描述
-    private TextView show_count;
+    private TextView show_count = null;
     //物品数量的背景样式
     private int countResource;
     //存储物品的数量
@@ -33,10 +34,18 @@ public class NumberOfItem extends RelativeLayout {
      * 构造方法 Java代码创建的时候进入
      * @param context
      */
-    public NumberOfItem(Context context) {
+    public NumberOfItem(Context context,int srcResource,int imgResource,int countResource) {
         super(context);
 
         init();
+
+        this.srcResource = srcResource;
+        this.imgResource = imgResource;
+        this.countResource = countResource;
+
+        show_img.setImageResource(srcResource);
+        show_img.setBackgroundResource(imgResource);
+        show_count.setBackgroundResource(countResource);
     }
 
     /**
@@ -59,14 +68,17 @@ public class NumberOfItem extends RelativeLayout {
                     R.styleable.NumberOfItem_srcResource,
                     R.drawable.fight
             );
+            show_img.setImageResource(srcResource);
             imgResource = typedArray.getResourceId(
                     R.styleable.NumberOfItem_imgResource,
                     R.drawable.img_shape
             );
+            show_img.setBackgroundResource(imgResource);
             countResource = typedArray.getResourceId(
                     R.styleable.NumberOfItem_countResource,
                     R.drawable.count_shape
             );
+            show_count.setBackgroundResource(countResource);
 
             //释放资源
             typedArray.recycle();
@@ -77,10 +89,16 @@ public class NumberOfItem extends RelativeLayout {
      * 初始化
      */
     private void init() {
+        //画笔操作
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setTextSize(PxUtil.spToPx(16,getContext()));
+        paint.setTextSize(PxUtil.spToPx(14,getContext()));
         paint.setTypeface(Typeface.DEFAULT_BOLD);
         paint.setColor(Color.WHITE);
+
+        //加载视图
+        View inflate = View.inflate(getContext(), R.layout.number_item, this);
+        show_img = inflate.findViewById(R.id.show_img);
+        show_count = inflate.findViewById(R.id.show_count);
     }
 
     @Override
@@ -97,8 +115,8 @@ public class NumberOfItem extends RelativeLayout {
 
         //设置wrap_content的默认宽 / 高值
         //默认宽/高的设定并无固定依据,根据需要灵活设置
-        int mWidth = PxUtil.dpToPx(60,getContext());
-        int mHeight = PxUtil.dpToPx(60,getContext());
+        int mWidth = PxUtil.dpToPx(45,getContext());
+        int mHeight = PxUtil.dpToPx(45,getContext());
 
         //当布局参数设置为wrap_content时，设置默认值
         //宽,高任意一个布局参数为= wrap_content时，都设置默认值
@@ -114,61 +132,6 @@ public class NumberOfItem extends RelativeLayout {
 
             //高度设置wrap_content
             setMeasuredDimension(widthSize, mHeight);
-        }
-    }
-
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        super.onLayout(changed, l, t, r, b);
-
-        //判断物品图片视图是否存在
-        if (show_img == null) {
-            //创建物品图片视图
-            show_img = new ImageView(getContext());
-            //设置图片
-            show_img.setImageResource(srcResource);
-            //设置背景样式
-            show_img.setBackgroundResource(imgResource);
-            //设置位置
-            show_img.layout(
-                    l+PxUtil.dpToPx(5,getContext()),
-                    t+PxUtil.dpToPx(5,getContext()),
-                    r-PxUtil.dpToPx(5,getContext()),
-                    b-PxUtil.dpToPx(5,getContext())
-            );
-            //添加视图
-            addView(show_img);
-        }else {
-            //设置位置
-            show_img.layout(
-                    l+PxUtil.dpToPx(5,getContext()),
-                    t+PxUtil.dpToPx(5,getContext()),
-                    r-PxUtil.dpToPx(5,getContext()),
-                    b-PxUtil.dpToPx(5,getContext())
-            );
-        }
-
-        //判断物品数量视图是否存在
-        if (show_count == null) {
-            //创建物品数量视图
-            show_count = new TextView(getContext());
-            //设置背景样式
-            show_count.setBackgroundResource(countResource);
-            //设置位置
-            show_count.layout(
-                    r-PxUtil.dpToPx(25,getContext()),
-                    b-PxUtil.dpToPx(25,getContext()),
-                    r, b
-            );
-            //添加视图
-            addView(show_count);
-        }else {
-            //设置位置
-            show_count.layout(
-                    r-PxUtil.dpToPx(25,getContext()),
-                    b-PxUtil.dpToPx(25,getContext()),
-                    r, b
-            );
         }
     }
 
@@ -217,5 +180,45 @@ public class NumberOfItem extends RelativeLayout {
 
     public void setPaint(Paint paint) {
         this.paint = paint;
+    }
+
+    public ImageView getShow_img() {
+        return show_img;
+    }
+
+    public void setShow_img(ImageView show_img) {
+        this.show_img = show_img;
+    }
+
+    public int getSrcResource() {
+        return srcResource;
+    }
+
+    public void setSrcResource(int srcResource) {
+        this.srcResource = srcResource;
+    }
+
+    public int getImgResource() {
+        return imgResource;
+    }
+
+    public void setImgResource(int imgResource) {
+        this.imgResource = imgResource;
+    }
+
+    public TextView getShow_count() {
+        return show_count;
+    }
+
+    public void setShow_count(TextView show_count) {
+        this.show_count = show_count;
+    }
+
+    public int getCountResource() {
+        return countResource;
+    }
+
+    public void setCountResource(int countResource) {
+        this.countResource = countResource;
     }
 }
