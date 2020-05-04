@@ -2,6 +2,9 @@
 简介：
 描述一个物品以及其数量的控件
 
+运行效果：
+![](https://github.com/xiaoshitounen/NumberOfItem/blob/master/xiaoguo/numberitem.png)
+
 #### 1. 添加依赖
 
 Add it in your root build.gradle at the end of repositories:
