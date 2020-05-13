@@ -28,7 +28,7 @@ dependencies {
 
 #### 2. Xml文件中静态使用
 
-~~~
+~~~xml
 <swu.xl.numberofitem.NumberOfItem
    android:id="@+id/number_item"
    android:layout_width="55dp"
