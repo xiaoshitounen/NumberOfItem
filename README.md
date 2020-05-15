@@ -6,7 +6,7 @@
 描述一个物品以及其数量的控件
 
 运行效果：
-![](https://github.com/xiaoshitounen/NumberOfItem/blob/master/xiaoguo/numberitem.png)
+![](https://android-1300729795.cos.ap-chengdu.myqcloud.com/project/Self_View/NumberOfItem/number_of_item.jpg)
 
 #### 1. 添加依赖
 
