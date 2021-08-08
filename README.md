@@ -1,6 +1,6 @@
 # NumberOfItem
 
-详细内容博客地址:[自定义View-NumberOfItem](https://fanandjiu.com/%E8%87%AA%E5%AE%9A%E4%B9%89View-NumberOfItem/#more)
+详细内容博客地址:[自定义View-NumberOfItem](http://www.fanandjiu.com/article/a0ebeec7.html)
 
 简介：
 描述一个物品以及其数量的控件
